@@ -12,15 +12,15 @@ import Typography from "@mui/material/Typography";
  */
 export default function UserDetails() {
 
-  const usersUrl = "https://dummyjson.com/users";
-  const [userData, setUserData] = useState([]);
+  const usersUrl = "https://dummyjson.com/users/4";
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     fetch(usersUrl)
       .then((response) => response.json())
-      .then((json) => {
-        console.log("users", json);
-        setUserData(json.users);
+      .then((user) => {
+        console.log("user", user);
+        setUserData(user);
       })
       .catch((error) => console.error(error));
   }, []);
@@ -42,7 +42,7 @@ export default function UserDetails() {
                   variant="body2"
                   color="text.primary"
                 >
-                  Ali Connors
+                  {userData?.firstName}
                 </Typography>
                 {" — I'll be in your neighborhood doing errands this…"}
               </React.Fragment>

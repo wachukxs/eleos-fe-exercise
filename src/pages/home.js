@@ -3,11 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import AddTask from "./add-task";
-import ListTask from "./list-tasks";
 import { Link } from "react-router-dom";
-import AddAndListTasks from "./add-and-list-tasks";
 import { Outlet } from "react-router-dom";
 
 export default function Home() {
