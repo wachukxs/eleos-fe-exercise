@@ -8,9 +8,7 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-
 import IconButton from "@mui/material/IconButton";
-
 import Icon from "@mui/material/Icon";
 
 function a11yProps(index) {
@@ -45,14 +43,9 @@ function CustomTabPanel(props) {
  * Design inspiration https://www.uidesigndaily.com/posts/sketch-profile-card-stats-list-day-1337
  */
 export default function UserDetails() {
+  // TODO: Pick user id from route param.
   const usersUrl = "https://dummyjson.com/users/4";
   const [userData, setUserData] = useState(null);
-
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
 
   const [value, setValue] = React.useState(0);
 
@@ -89,12 +82,6 @@ export default function UserDetails() {
           title={`${userData?.firstName} ${userData?.lastName}`}
           subheader={userData?.email}
         />
-        {/* <CardMedia
-          component="img"
-          height="194"
-          image="/static/images/cards/paella.jpg"
-          alt="Paella dish"
-        /> */}
         <CardContent>
           <Typography variant="body2" color="text.secondary">
             This impressive paella is a perfect party dish and a fun meal to

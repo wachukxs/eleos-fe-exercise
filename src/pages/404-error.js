@@ -7,7 +7,7 @@ export default function ErrorPage() {
       paddingTop: "35%",
     }}>
       <img
-        alt="eleos logo"
+        alt="eleos' logo"
         height={30}
         loading="lazy"
         src="https://www.eleos.co.uk/consumer/eleos-logo-new-color.svg"
