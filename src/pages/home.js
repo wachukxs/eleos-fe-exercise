@@ -9,7 +9,7 @@ import { Outlet } from "react-router-dom";
 export default function Home() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ marginBottom: "15px" }}>
         <Toolbar>
           <Typography
             variant="h6"

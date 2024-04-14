@@ -1,19 +1,64 @@
 import React, { useEffect, useState } from "react";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import Divider from "@mui/material/Divider";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+
+import IconButton from "@mui/material/IconButton";
+
+import Icon from "@mui/material/Icon";
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
+
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
 
 /***
  * Use table to display data?? 10 users per page??
+ * Design inspiration https://www.uidesigndaily.com/posts/sketch-profile-card-stats-list-day-1337
  */
 export default function UserDetails() {
-
   const usersUrl = "https://dummyjson.com/users/4";
   const [userData, setUserData] = useState(null);
+
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   useEffect(() => {
     fetch(usersUrl)
@@ -22,78 +67,70 @@ export default function UserDetails() {
         console.log("user", user);
         setUserData(user);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error)); // TODO: Show notification on failure
   }, []);
 
   return (
     <>
-      <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Brunch this weekend?"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  sx={{ display: "inline" }}
-                  component="span"
-                  variant="body2"
-                  color="text.primary"
-                >
-                  Hello What?{/* {userData?.firstName} */}
-                </Typography>
-                {" — I'll be in your neighborhood doing errands this…"}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-        <Divider variant="inset" component="li" />
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Summer BBQ"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  sx={{ display: "inline" }}
-                  component="span"
-                  variant="body2"
-                  color="text.primary"
-                >
-                  to Scott, Alex, Jennifer
-                </Typography>
-                {" — Wish I could come, but I'm out of town this…"}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-        <Divider variant="inset" component="li" />
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Oui Oui"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  sx={{ display: "inline" }}
-                  component="span"
-                  variant="body2"
-                  color="text.primary"
-                >
-                  Sandra Adams
-                </Typography>
-                {" — Do you have Paris recommendations? Have you ever…"}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-      </List>
+      <Card sx={{ maxWidth: 345, margin: "0 auto", marginTop: "10%" }}>
+        <CardHeader
+          avatar={
+            <Avatar
+              alt={`${userData?.firstName} ${userData?.lastName}`}
+              src={userData?.image}
+              aria-label="user picture"
+            />
+          }
+          action={
+            <IconButton aria-label="settings">
+              <Icon>more</Icon>
+            </IconButton>
+          }
+          title={`${userData?.firstName} ${userData?.lastName}`}
+          subheader={userData?.email}
+        />
+        {/* <CardMedia
+          component="img"
+          height="194"
+          image="/static/images/cards/paella.jpg"
+          alt="Paella dish"
+        /> */}
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+            This impressive paella is a perfect party dish and a fun meal to
+            cook together with your guests. Add 1 cup of frozen peas along with
+            the mussels, if you like.
+          </Typography>
+        </CardContent>
+        <CardActions disableSpacing>
+          {/* Tabs header */}
+          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              aria-label="basic tabs example"
+            >
+              <Tab label="Item One" {...a11yProps(0)} />
+              <Tab label="Item Two" {...a11yProps(1)} />
+              <Tab label="Item Three" {...a11yProps(2)} />
+            </Tabs>
+          </Box>
+        </CardActions>
+
+        {/* Tabs content */}
+
+        <Box sx={{ width: "100%" }}>
+          <CustomTabPanel value={value} index={0}>
+            Item One
+          </CustomTabPanel>
+          <CustomTabPanel value={value} index={1}>
+            Item Two
+          </CustomTabPanel>
+          <CustomTabPanel value={value} index={2}>
+            Item Three
+          </CustomTabPanel>
+        </Box>
+      </Card>
     </>
   );
 }
