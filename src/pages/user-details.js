@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
-import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import IconButton from "@mui/material/IconButton";
-import Icon from "@mui/material/Icon";
+import {
+  Icon,
+  Avatar,
+  Typography,
+  IconButton,
+  CardActions,
+  CardContent,
+  CardHeader,
+  Card,
+  Box,
+  Tab,
+  Tabs,
+} from "@mui/material";
+import { useParams } from "react-router-dom";
+import UserDetailsSkeleton from "../components/user-details-skeleton";
 
 function a11yProps(index) {
   return {
@@ -43,8 +47,11 @@ function CustomTabPanel(props) {
  */
 export default function UserDetails() {
   // TODO: Pick user id from route param.
-  const usersUrl = "https://dummyjson.com/users/4";
+  const { userId } = useParams();
+  console.log(userId);
+  const usersUrl = `https://dummyjson.com/users/${userId}`;
   const [userData, setUserData] = useState(null);
+  const [fetchingData, setFetchingData] = useState(true);
 
   const [value, setValue] = React.useState(0);
 
@@ -59,64 +66,74 @@ export default function UserDetails() {
         console.log("user", user);
         setUserData(user);
       })
-      .catch((error) => console.error(error)); // TODO: Show notification on failure
+      .catch((error) => {
+        console.error(error);
+        // TODO: show error. Also do check for if user is not null
+      })
+      .finally(() => setFetchingData(false)); // TODO: Show notification on failure
   }, []);
 
   return (
     <>
-      <Card sx={{ maxWidth: 345, margin: "0 auto", marginTop: "10%" }}>
-        <CardHeader
-          avatar={
-            <Avatar
-              alt={`${userData?.firstName} ${userData?.lastName}`}
-              src={userData?.image}
-              aria-label="user picture"
-            />
-          }
-          action={
-            <IconButton aria-label="settings">
-              <Icon>more</Icon>
-            </IconButton>
-          }
-          title={`${userData?.firstName} ${userData?.lastName}`}
-          subheader={userData?.email}
-        />
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          {/* Tabs header */}
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              aria-label="basic tabs example"
-            >
-              <Tab label="Item One" {...a11yProps(0)} />
-              <Tab label="Item Two" {...a11yProps(1)} />
-              <Tab label="Item Three" {...a11yProps(2)} />
-            </Tabs>
+      {fetchingData ? (
+        <UserDetailsSkeleton />
+      ) : userData ? (
+        <Card sx={{ maxWidth: 345, margin: "0 auto", marginTop: "10%" }}>
+          <CardHeader
+            avatar={
+              <Avatar
+                alt={`${userData?.firstName} ${userData?.lastName}`}
+                src={userData?.image}
+                aria-label="user picture"
+              />
+            }
+            // action={
+            //   <IconButton aria-label="more actions">
+            //     <Icon>more</Icon>
+            //   </IconButton>
+            // }
+            title={`${userData?.firstName} ${userData?.lastName}`}
+            subheader={userData?.email}
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary">
+              This impressive paella is a perfect party dish and a fun meal to
+              cook together with your guests. Add 1 cup of frozen peas along
+              with the mussels, if you like.
+            </Typography>
+          </CardContent>
+          <CardActions disableSpacing>
+            {/* Tabs header */}
+            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                aria-label="basic tabs example"
+              >
+                <Tab label="Item One" {...a11yProps(0)} />
+                <Tab label="Item Two" {...a11yProps(1)} />
+                <Tab label="Item Three" {...a11yProps(2)} />
+              </Tabs>
+            </Box>
+          </CardActions>
+
+          {/* Tabs content */}
+
+          <Box sx={{ width: "100%" }}>
+            <CustomTabPanel value={value} index={0}>
+              Item One
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={1}>
+              Item Two
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={2}>
+              Item Three
+            </CustomTabPanel>
           </Box>
-        </CardActions>
-
-        {/* Tabs content */}
-
-        <Box sx={{ width: "100%" }}>
-          <CustomTabPanel value={value} index={0}>
-            Item One
-          </CustomTabPanel>
-          <CustomTabPanel value={value} index={1}>
-            Item Two
-          </CustomTabPanel>
-          <CustomTabPanel value={value} index={2}>
-            Item Three
-          </CustomTabPanel>
-        </Box>
-      </Card>
+        </Card>
+      ) : (
+        <></>
+      )}
     </>
   );
 }
