@@ -12,7 +12,7 @@ export default function ListUsers() {
     {
       /**
        * TODO:
-       * 1. Lazy load images.
+       * 1. Lazy load images. (Not sure it's possible.)
        * 2. If one row is selected, show button to open that selection details in a new tab.
        */
       field: "image",

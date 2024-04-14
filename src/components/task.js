@@ -1,29 +1,32 @@
 import React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
-import Icon from "@mui/material/Icon";
+import {
+  Card,
+  CardContent,
+  CardActions,
+  Typography,
+  Icon,
+  IconButton,
+} from "@mui/material";
 
 export default function Task({ task, deleteAction }) {
-  // console.log('task to display', task);
-
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
-            {task?.name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {task?.description}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+    <Card sx={{ display: "flex", alignItems: "start" }}>
+      <CardContent sx={{ flexGrow: 1 }}>
+        <Typography gutterBottom variant="h6" component="div">
+          {task?.name}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {task?.description}
+        </Typography>
+      </CardContent>
       <CardActions>
-        <Button size="small" color="primary" onClick={deleteAction}>
+        <IconButton
+          color="error"
+          aria-label="delete task"
+          onClick={() => deleteAction(task.id)}
+        >
           <Icon>delete_forever</Icon>
-        </Button>
+        </IconButton>
       </CardActions>
     </Card>
   );

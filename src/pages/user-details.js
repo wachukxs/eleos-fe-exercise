@@ -39,7 +39,6 @@ function CustomTabPanel(props) {
 }
 
 /***
- * Use table to display data?? 10 users per page??
  * Design inspiration https://www.uidesigndaily.com/posts/sketch-profile-card-stats-list-day-1337
  */
 export default function UserDetails() {

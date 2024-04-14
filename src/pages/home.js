@@ -1,30 +1,31 @@
 import React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+import { Box, Typography, Button, Toolbar, AppBar } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 
 export default function Home() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ marginBottom: "15px" }}>
+      <AppBar
+        position="static"
+        color="warning"
+        style={{ marginBottom: "15px" }}
+      >
         <Toolbar>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            Eleos.
-          </Typography>
-
-          <Link to="/users">Users</Link>
+          <Link to="/">
+            <Typography variant="h6" component="div">
+              List App
+            </Typography>
+          </Link>
+          <div style={{ flexGrow: 1 }}></div>
+          <Link to="/users">
+            <Button color="inherit">Users</Button>
+          </Link>
         </Toolbar>
       </AppBar>
 
       <Outlet />
     </Box>
+    // TODO: We need a footer!
   );
 }
