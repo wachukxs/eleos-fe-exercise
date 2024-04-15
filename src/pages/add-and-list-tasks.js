@@ -83,7 +83,7 @@ export default function AddAndListTasks() {
       )}
       <Snackbar
         open={message.open}
-        autoHideDuration={6000}
+        autoHideDuration={1200}
         onClose={handleSnackBarClose}
         TransitionComponent={(props) => <Slide {...props} direction="up" />}
         message={message.text}

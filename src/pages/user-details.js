@@ -60,7 +60,7 @@ export default function UserDetails() {
 
       <Snackbar
         open={someOtherErrorOccurred}
-        autoHideDuration={6000}
+        autoHideDuration={1200}
         onClose={() => setSomeOtherErrorOccurred(false)}
         message="An error occurred, that's all we know for now"
       />
