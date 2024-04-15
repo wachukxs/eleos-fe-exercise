@@ -51,9 +51,6 @@ export default function AddTask({ onAddTaskClick, userTasksUpdated }) {
       </Typography>
       <Box
         component="form"
-        // sx={{
-        //   '& .MuiTextField-root': { m: 1, width: '25ch' },
-        // }}
         display="flex"
         gap="15px"
         noValidate

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Grid from "@mui/system/Unstable_Grid";
 import AddTask from "./add-task";
 import ListTask from "./list-tasks";
-import { Slide, Icon, IconButton, Snackbar, Box, Divider } from "@mui/material";
+import { Slide, Icon, IconButton, Snackbar, Box } from "@mui/material";
 import EditTaskDialog from "../components/edit-task-dialog";
 
 export default function AddAndListTasks() {
@@ -49,7 +49,7 @@ export default function AddAndListTasks() {
     setMessage({ open: false, text: "" });
   };
 
-  // TODO: maybe use setUserTaskToEdit(null) directly?
+  // TODO: maybe use setUserTaskToEdit(null) directly.
   const handleEditDialogClose = () => {
     setUserTaskToEdit(null);
   };
