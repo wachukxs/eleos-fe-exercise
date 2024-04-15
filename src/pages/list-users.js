@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Avatar from "@mui/material/Avatar";
+import { Avatar, Typography } from "@mui/material";
 
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 
-/***
- * Use table to display data?? 10 users per page??
- */
 export default function ListUsers() {
   const columnsDefinition = [
     {
       /**
        * TODO:
-       * 1. Lazy load images. (Not sure it's possible.)
-       * 2. If one row is selected, show button to open that selection details in a new tab.
+       * 1. Maybe if one row is selected, show button to open that selection details in a new tab.
        */
       field: "image",
       headerName: "Pic.",
@@ -54,10 +50,14 @@ export default function ListUsers() {
       <div
         style={{
           height: 350,
-          width: "fit-content",
+          maxWidth: "fit-content",
           margin: "0 auto",
+          padding: "0 15px",
         }}
       >
+        <Typography variant="h5" gutterBottom>
+          All Users
+        </Typography>
         <DataGrid
           rows={userData}
           columns={columnsDefinition}

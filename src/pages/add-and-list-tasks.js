@@ -45,8 +45,8 @@ export default function AddAndListTasks() {
   };
 
   return (
-    <div style={{padding: "10px"}}>
-      <Box sx={{ flexGrow: 1 }}>
+    <>
+      <Box style={{ padding: "10px", maxWidth: "900px", margin: "0 auto" }}>
         <Grid container spacing={2}>
           <Grid xs={12} sm={6}>
             <AddTask
@@ -75,6 +75,6 @@ export default function AddAndListTasks() {
           </IconButton>
         }
       />
-    </div>
+    </>
   );
 }

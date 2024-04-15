@@ -13,35 +13,25 @@ import {
   Tabs,
   Alert,
   Snackbar,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemAvatar,
 } from "@mui/material";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
+
 import { useParams } from "react-router-dom";
 import UserDetailsSkeleton from "../components/user-details-skeleton";
+import UserDetailsCard from "../components/user-details-card";
 
+// TODO: add a11y (prop) in user-details-card.js
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
     "aria-controls": `simple-tabpanel-${index}`,
   };
-}
-
-function CustomTabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
 }
 
 /***
@@ -54,15 +44,9 @@ export default function UserDetails() {
   const [errorFetchingData, setErrorFetchingData] = useState(false);
   const [someOtherErrorOccurred, setSomeOtherErrorOccurred] = useState(false);
 
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
   useEffect(() => {
     const usersUrl = `https://dummyjson.com/users/${userId}`;
-    
+
     fetch(usersUrl)
       .then((response) => {
         console.log("status", response.status);
@@ -76,7 +60,7 @@ export default function UserDetails() {
         setUserData(user);
       })
       .catch((error) => {
-        setSomeOtherErrorOccurred(true)
+        setSomeOtherErrorOccurred(true);
       })
       .finally(() => setIsFetchingData(false));
   }, [userId]);
@@ -88,66 +72,14 @@ export default function UserDetails() {
       ) : errorFetchingData ? (
         <Box>
           <Alert
-            style={{ width: "fit-content", margin: "0 auto" }}
+            style={{ width: "fit-content", margin: "0 auto", marginTop: "10%" }}
             severity="error"
           >
             {userData?.message}
           </Alert>
         </Box>
       ) : (
-        <Card sx={{ maxWidth: 345, margin: "0 auto", marginTop: "10%" }}>
-          <CardHeader
-            avatar={
-              <Avatar
-                alt={`${userData?.firstName} ${userData?.lastName}`}
-                src={userData?.image}
-                aria-label="user picture"
-              />
-            }
-            // action={
-            //   <IconButton aria-label="more actions">
-            //     <Icon>more</Icon>
-            //   </IconButton>
-            // }
-            title={`${userData?.firstName} ${userData?.lastName}`}
-            subheader={userData?.email}
-          />
-          <CardContent>
-            <Typography variant="body2" color="text.secondary">
-              This impressive paella is a perfect party dish and a fun meal to
-              cook together with your guests. Add 1 cup of frozen peas along
-              with the mussels, if you like.
-            </Typography>
-          </CardContent>
-          <CardActions disableSpacing>
-            {/* Tabs header */}
-            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                aria-label="basic tabs example"
-              >
-                <Tab label="Item One" {...a11yProps(0)} />
-                <Tab label="Item Two" {...a11yProps(1)} />
-                <Tab label="Item Three" {...a11yProps(2)} />
-              </Tabs>
-            </Box>
-          </CardActions>
-
-          {/* Tabs content */}
-
-          <Box sx={{ width: "100%" }}>
-            <CustomTabPanel value={value} index={0}>
-              Item One
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={1}>
-              Item Two
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={2}>
-              Item Three
-            </CustomTabPanel>
-          </Box>
-        </Card>
+        <UserDetailsCard user={userData} />
       )}
 
       <Snackbar

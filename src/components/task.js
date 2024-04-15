@@ -16,6 +16,7 @@ export default function Task({ task, deleteAction }) {
           {task?.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
+          {/* TODO: Text ellipse overflow on very long description (https://mui.com/material-ui/react-menu/#limitations) */}
           {task?.description}
         </Typography>
       </CardContent>

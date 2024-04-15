@@ -94,7 +94,14 @@ export default function AddTask({ onAddTaskClick, userTasksUpdated }) {
         />
 
         {/* TODO: Maybe even disable button if name & tasks are empty/have errors */}
-        <Button variant="contained" onClick={handleSubmit(submitTaskToAdd)}>
+        <Button
+          style={{
+            width: "fit-content",
+            alignSelf: "flex-end",
+          }}
+          variant="contained"
+          onClick={handleSubmit(submitTaskToAdd)}
+        >
           Submit
         </Button>
       </Box>

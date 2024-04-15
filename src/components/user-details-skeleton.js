@@ -30,11 +30,11 @@ export default function UserDetailsSkeleton() {
       />
       <CardContent>
         <Skeleton
-          sx={{ height: 150, marginBottom: "15px" }}
+          sx={{ height: 200, marginBottom: "15px" }}
           animation="wave"
           variant="rectangular"
         />
-        <Skeleton sx={{ height: 30 }} animation="wave" variant="rectangular" />
+        <Skeleton sx={{ height: 150 }} animation="wave" variant="rectangular" />
       </CardContent>
     </Card>
   );

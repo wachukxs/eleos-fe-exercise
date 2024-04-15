@@ -1,7 +1,7 @@
 import React from "react";
 import Task from "../components/task";
 import Stack from "@mui/system/Stack";
-import { Typography } from "@mui/material";
+import { Typography, Alert, Icon } from "@mui/material";
 
 export default function ListTask({ tasks, deleteAction }) {
   return (
@@ -16,7 +16,9 @@ export default function ListTask({ tasks, deleteAction }) {
           ))}
         </Stack>
       ) : (
-        <div>No tasks, you're all cleared up.</div>
+        <Alert icon={<Icon>check</Icon>} severity="success">
+          No task, you're all cleared up. 🎉
+        </Alert>
       )}
     </>
   );
