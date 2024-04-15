@@ -68,7 +68,7 @@ export default function AddTask({ onAddTaskClick, userTasksUpdated }) {
           variant="contained"
           onClick={handleSubmit(submitTaskToAdd)}
         >
-          Submit
+          Add
         </Button>
       </Box>
     </>
