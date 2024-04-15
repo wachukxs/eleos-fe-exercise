@@ -22,9 +22,7 @@ export default function Task({ task, deleteAction, editAction, setUserTaskToEdit
 
   const setTaskToEdit = () => {
     setUserTaskToEdit(task)
-
-    // close the menu
-    handleMenuClose()
+    handleMenuClose() // close the menu
   }
 
   return (

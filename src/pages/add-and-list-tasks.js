@@ -16,7 +16,7 @@ export default function AddAndListTasks() {
       id: generateTaskId(),
       name: "Test Task Name",
       description:
-        "This is a first test task description message for the purpose of demo. I don't want to use Lorem Ipsum. I really don't. You can delete this!",
+        "This is a first test task description message for the purpose of demo. I don't want to use Lorem Ipsum. You can delete this.",
     },
   ]);
 

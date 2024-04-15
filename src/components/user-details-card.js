@@ -18,9 +18,7 @@ import {
   ButtonGroup,
   Tooltip,
 } from "@mui/material";
-import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
-import TabPanel from "@mui/lab/TabPanel";
+import { TabContext, TabList, TabPanel } from "@mui/lab";
 
 export default function UserDetailsCard({ user }) {
   const [currentTab, setCurrentTab] = React.useState("1");
@@ -39,7 +37,6 @@ export default function UserDetailsCard({ user }) {
   function a11yTabContentProps(index) {
     return {
       role: "tabpanel",
-      // hidden: {value !== index}
       id: `simple-tabpanel-${index}`,
       "aria-labelledby": `simple-tab-${index}`,
     };
