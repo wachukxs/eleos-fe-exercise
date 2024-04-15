@@ -10,7 +10,6 @@ import {
   Card,
   Box,
   Tab,
-  Tabs,
   List,
   ListItem,
   ListItemText,
@@ -61,7 +60,7 @@ export default function UserDetailsCard({ user }) {
       </CardContent>
 
       {/* Tabs content */}
-      {/* TODO: show a map integration? */}
+      {/* TODO: Maybe show a map integration? */}
 
       <Box sx={{ width: "100%" }}>
         <TabContext value={currentTab}>
@@ -86,12 +85,11 @@ export default function UserDetailsCard({ user }) {
             <List
               sx={{
                 width: "100%",
-                bgcolor: "background.paper",
               }}
             >
               <ListItem>
                 <ListItemAvatar>
-                  <Avatar>
+                  <Avatar sx={{ bgcolor: "info.main" }}>
                     <Icon>image</Icon>
                   </Avatar>
                 </ListItemAvatar>
@@ -102,7 +100,7 @@ export default function UserDetailsCard({ user }) {
               </ListItem>
               <ListItem>
                 <ListItemAvatar>
-                  <Avatar>
+                  <Avatar sx={{ bgcolor: "info.main" }}>
                     <Icon>work</Icon>
                   </Avatar>
                 </ListItemAvatar>
@@ -117,12 +115,11 @@ export default function UserDetailsCard({ user }) {
             <List
               sx={{
                 width: "100%",
-                bgcolor: "background.paper",
               }}
             >
               <ListItem>
                 <ListItemAvatar>
-                  <Avatar>
+                  <Avatar sx={{ bgcolor: "info.main" }}>
                     <Icon>image</Icon>
                   </Avatar>
                 </ListItemAvatar>
@@ -130,7 +127,7 @@ export default function UserDetailsCard({ user }) {
               </ListItem>
               <ListItem>
                 <ListItemAvatar>
-                  <Avatar>
+                  <Avatar sx={{ bgcolor: "info.main" }}>
                     <Icon>work</Icon>
                   </Avatar>
                 </ListItemAvatar>
@@ -147,12 +144,11 @@ export default function UserDetailsCard({ user }) {
             <List
               sx={{
                 width: "100%",
-                bgcolor: "background.paper",
               }}
             >
               <ListItem>
                 <ListItemAvatar>
-                  <Avatar>
+                  <Avatar sx={{ bgcolor: "info.main" }}>
                     <Icon>image</Icon>
                   </Avatar>
                 </ListItemAvatar>
@@ -163,7 +159,7 @@ export default function UserDetailsCard({ user }) {
               </ListItem>
               <ListItem>
                 <ListItemAvatar>
-                  <Avatar>
+                  <Avatar sx={{ bgcolor: "info.main" }}>
                     <Icon>work</Icon>
                   </Avatar>
                 </ListItemAvatar>
@@ -215,12 +211,11 @@ export default function UserDetailsCard({ user }) {
             <List
               sx={{
                 width: "100%",
-                bgcolor: "background.paper",
               }}
             >
               <ListItem>
                 <ListItemAvatar>
-                  <Avatar>
+                  <Avatar sx={{ bgcolor: "info.main" }}>
                     <Icon>image</Icon>
                   </Avatar>
                 </ListItemAvatar>
@@ -231,7 +226,7 @@ export default function UserDetailsCard({ user }) {
               </ListItem>
               <ListItem>
                 <ListItemAvatar>
-                  <Avatar>
+                  <Avatar sx={{ bgcolor: "info.main" }}>
                     <Icon>work</Icon>
                   </Avatar>
                 </ListItemAvatar>
@@ -242,7 +237,7 @@ export default function UserDetailsCard({ user }) {
               </ListItem>
               <ListItem>
                 <ListItemAvatar>
-                  <Avatar>
+                  <Avatar sx={{ bgcolor: "info.main" }}>
                     <Icon>work</Icon>
                   </Avatar>
                 </ListItemAvatar>

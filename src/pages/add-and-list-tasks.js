@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
-import Snackbar from "@mui/material/Snackbar";
 import Grid from "@mui/system/Unstable_Grid";
 import AddTask from "./add-task";
 import ListTask from "./list-tasks";
-import IconButton from "@mui/material/IconButton";
-import Icon from "@mui/material/Icon";
+import { Slide, Icon, IconButton, Snackbar, Box } from "@mui/material";
 
 export default function AddAndListTasks() {
   const generateTaskId = () => Math.random().toString(20).slice(2);
@@ -32,7 +29,7 @@ export default function AddAndListTasks() {
   };
 
   useEffect(() => {
-    console.log(userTasks);
+    // console.log(userTasks);
     setUserTasksUpdated((userTasksUpdated) => !userTasksUpdated);
   }, [userTasks]);
 
@@ -63,6 +60,7 @@ export default function AddAndListTasks() {
         open={message.open}
         autoHideDuration={6000}
         onClose={handleClose}
+        TransitionComponent={(props) => <Slide {...props} direction="up" />}
         message={message.text}
         action={
           <IconButton

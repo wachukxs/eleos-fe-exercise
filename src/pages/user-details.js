@@ -49,14 +49,14 @@ export default function UserDetails() {
 
     fetch(usersUrl)
       .then((response) => {
-        console.log("status", response.status);
+        // console.log("status", response.status);
         if (response.status !== 200) {
           setErrorFetchingData(true);
         }
         return response.json();
       })
       .then((user) => {
-        console.log("user", user);
+        // console.log("user", user);
         setUserData(user);
       })
       .catch((error) => {
