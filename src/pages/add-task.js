@@ -8,11 +8,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
  * TODO:
  * 1. make inputs a component of their own.
  * 2. Maybe if there's a draft task, show a modal to ask if they want to save as draft the task, before leaving the page.
- * @param {*} param0
- * @returns
  */
 export default function AddTask({ onAddTaskClick, userTasksUpdated }) {
-  let taskSchema = object({
+  const taskSchema = object({
     name: string()
       .required("Task name is required")
       .min(3, "Minimum of 3 characters needed"),
@@ -93,7 +91,6 @@ export default function AddTask({ onAddTaskClick, userTasksUpdated }) {
           )}
         />
 
-        {/* TODO: Maybe even disable button if name & tasks are empty/have errors */}
         <Button
           style={{
             width: "fit-content",
