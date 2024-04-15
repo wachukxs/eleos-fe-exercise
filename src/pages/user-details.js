@@ -44,7 +44,7 @@ export default function UserDetails() {
 
   return (
     <>
-      <div style={{ maxWidth: "fit-content", margin: "0 auto" }}>
+      <div style={{ minWidth: 376, maxWidth: "fit-content", margin: "0 auto" }}>
         <PageHeader title="User Details" withBackButton />
         {isFetchingData ? (
           <UserDetailsSkeleton />
