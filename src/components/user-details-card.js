@@ -29,6 +29,22 @@ export default function UserDetailsCard({ user }) {
     setCurrentTab(newValue);
   };
 
+  function a11yProps(index) {
+    return {
+      id: `simple-tab-${index}`,
+      "aria-controls": `simple-tabpanel-${index}`,
+    };
+  }
+
+  function a11yTabContentProps(index) {
+    return {
+      role: "tabpanel",
+      // hidden: {value !== index}
+      id: `simple-tabpanel-${index}`,
+      "aria-labelledby": `simple-tab-${index}`,
+    };
+  }
+
   return (
     <Card sx={{ maxWidth: "min-content", margin: "0 auto", marginTop: "10px" }}>
       <CardHeader
@@ -69,19 +85,19 @@ export default function UserDetailsCard({ user }) {
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
               <TabList
                 onChange={handleTabChange}
-                aria-label="lab API tabs example"
+                aria-label="user details sections"
                 // variant="scrollable"
                 // scrollButtons="auto"
               >
-                <Tab label="Job" value="1" />
-                <Tab label="Bank" value="2" />
-                <Tab label="Crypto" value="3" />
-                <Tab label="Other" value="4" />
+                <Tab label="Job" value="1" {...a11yProps(1)} />
+                <Tab label="Bank" value="2" {...a11yProps(2)} />
+                <Tab label="Crypto" value="3" {...a11yProps(3)} />
+                <Tab label="Other" value="4" {...a11yProps(4)} />
               </TabList>
             </Box>
           </CardActions>
 
-          <TabPanel value="1">
+          <TabPanel value="1" {...a11yTabContentProps(1)}>
             <List
               sx={{
                 width: "100%",
@@ -111,7 +127,7 @@ export default function UserDetailsCard({ user }) {
               </ListItem>
             </List>
           </TabPanel>
-          <TabPanel value="2">
+          <TabPanel value="2" {...a11yTabContentProps(2)}>
             <List
               sx={{
                 width: "100%",
@@ -140,7 +156,7 @@ export default function UserDetailsCard({ user }) {
               </ListItem>
             </List>
           </TabPanel>
-          <TabPanel value="3">
+          <TabPanel value="3" {...a11yTabContentProps(3)}>
             <List
               sx={{
                 width: "100%",
@@ -207,7 +223,7 @@ export default function UserDetailsCard({ user }) {
               </ListItem>
             </List>
           </TabPanel>
-          <TabPanel value="4">
+          <TabPanel value="4" {...a11yTabContentProps(4)}>
             <List
               sx={{
                 width: "100%",
