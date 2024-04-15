@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# What I did
+* Live preview here [https://eleos-fe-exe.netlify.app/](https://eleos-fe-exe.netlify.app/)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

@@ -21,11 +21,13 @@ export default function ListTask({
             Add Task List
           </Typography>
         </Grid>
-        <Grid item>
-          <Typography variant="overline" gutterBottom>
-            {tasks?.length} task{tasks?.length > 1 ? "s" : ""}
-          </Typography>
-        </Grid>
+        {!tasks?.length ? null : (
+          <Grid item>
+            <Typography variant="overline" gutterBottom>
+              {tasks?.length} task{tasks?.length > 1 ? "s" : ""}
+            </Typography>
+          </Grid>
+        )}
       </Grid>
 
       {tasks.length ? (
