@@ -3,7 +3,7 @@ import { CardContent, CardHeader, Card, Skeleton } from "@mui/material";
 
 export default function UserDetailsSkeleton() {
   return (
-    <Card sx={{ maxWidth: 376, margin: "0 auto", marginTop: "10px" }}>
+    <Card sx={{ minWidth: 376, margin: "0 auto", marginTop: "10px" }}>
       <CardHeader
         avatar={
           <Skeleton
@@ -13,11 +13,6 @@ export default function UserDetailsSkeleton() {
             height={40}
           />
         }
-        // action={
-        //   <IconButton aria-label="more actions">
-        //     <Icon>more</Icon>
-        //   </IconButton>
-        // }
         title={
           <Skeleton
             animation="wave"

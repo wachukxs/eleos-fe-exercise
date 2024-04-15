@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Box, Alert, Snackbar } from "@mui/material";
 import UserDetailsSkeleton from "../components/user-details-skeleton";
 import UserDetailsCard from "../components/user-details-card";
+import PageHeader from "../components/page-header";
 
 // TODO: add a11y (prop) in user-details-card.js
 function a11yProps(index) {
@@ -43,20 +44,27 @@ export default function UserDetails() {
 
   return (
     <>
-      {isFetchingData ? (
-        <UserDetailsSkeleton />
-      ) : errorFetchingData ? (
-        <Box>
-          <Alert
-            style={{ width: "fit-content", margin: "0 auto", marginTop: "10%" }}
-            severity="error"
-          >
-            {userData?.message}
-          </Alert>
-        </Box>
-      ) : (
-        <UserDetailsCard user={userData} />
-      )}
+      <div style={{ maxWidth: "fit-content", margin: "0 auto" }}>
+        <PageHeader title="User Details" withBackButton />
+        {isFetchingData ? (
+          <UserDetailsSkeleton />
+        ) : errorFetchingData ? (
+          <Box>
+            <Alert
+              style={{
+                width: "fit-content",
+                margin: "0 auto",
+                marginTop: "10%",
+              }}
+              severity="error"
+            >
+              {userData?.message}
+            </Alert>
+          </Box>
+        ) : (
+          <UserDetailsCard user={userData} />
+        )}
+      </div>
 
       <Snackbar
         open={someOtherErrorOccurred}

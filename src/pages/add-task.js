@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { Typography, Box, Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormInputText from "../components/form-input-text";
 import FormInputTextarea from "../components/form-input-textarea";
+import PageHeader from "../components/page-header";
 
 /**
  * TODO:
@@ -46,9 +47,7 @@ export default function AddTask({ onAddTaskClick, userTasksUpdated }) {
 
   return (
     <>
-      <Typography variant="h5" gutterBottom>
-        Add Task Form
-      </Typography>
+      <PageHeader title="Add Task Form" />
       <Box
         component="form"
         display="flex"

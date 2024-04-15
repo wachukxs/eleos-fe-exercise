@@ -2,6 +2,7 @@ import React from "react";
 import Task from "../components/task";
 import Stack from "@mui/system/Stack";
 import { Typography, Alert, Icon, Grid } from "@mui/material";
+import PageHeader from "../components/page-header";
 
 export default function ListTask({
   tasks,
@@ -17,9 +18,7 @@ export default function ListTask({
         sx={{ alignItems: "center", justifyContent: "space-between" }}
       >
         <Grid item>
-          <Typography variant="h5" gutterBottom>
-            Add Task List
-          </Typography>
+          <PageHeader title="Add Task List" />
         </Grid>
         {!tasks?.length ? null : (
           <Grid item>

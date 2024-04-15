@@ -5,28 +5,34 @@ import ListUsers from "./pages/list-users";
 import UserDetails from "./pages/user-details";
 import AddAndListTasks from "./pages/add-and-list-tasks";
 
+export const routes = [
+  {
+    path: "/",
+    label: "Home",
+    element: <Home />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        label: "Home",
+        element: <AddAndListTasks />,
+      },
+      {
+        path: "/users",
+        label: "Users",
+        element: <ListUsers />,
+      },
+      {
+        path: "users/:userId",
+        label: "User Details",
+        element: <UserDetails />,
+      },
+    ],
+  },
+];
+
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Home />,
-      errorElement: <ErrorPage />,
-      children: [
-        {
-          path: "/",
-          element: <AddAndListTasks />,
-        },
-        {
-          path: "/users",
-          element: <ListUsers />,
-        },
-        {
-          path: "users/:userId",
-          element: <UserDetails />,
-        },
-      ],
-    },
-  ]);
+  const router = createBrowserRouter(routes);
 
   return <RouterProvider router={router} />;
 }

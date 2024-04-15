@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Avatar, Typography } from "@mui/material";
-
+import { Avatar } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
+import PageHeader from "../components/page-header";
 
 export default function ListUsers() {
   const columnsDefinition = [
@@ -51,12 +51,10 @@ export default function ListUsers() {
           height: 350,
           maxWidth: "fit-content",
           margin: "0 auto",
-          padding: "10px 15px 0 15px",
+          padding: "0 10px",
         }}
       >
-        <Typography variant="h5" gutterBottom>
-          All Users
-        </Typography>
+        <PageHeader title="All Users" withBackButton />
         <DataGrid
           rows={userData}
           columns={columnsDefinition}
