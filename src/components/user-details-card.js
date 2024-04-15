@@ -30,7 +30,7 @@ export default function UserDetailsCard({ user }) {
   };
 
   return (
-    <Card sx={{ maxWidth: "min-content", margin: "0 auto", marginTop: "10%" }}>
+    <Card sx={{ maxWidth: "min-content", margin: "0 auto", marginTop: "10px" }}>
       <CardHeader
         avatar={
           <Avatar

@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 export default function Home() {
-  // Using eleos's Brand colors
+  // eleos's brand colors
   const theme = createTheme({
     palette: {
       primary: {

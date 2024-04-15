@@ -51,7 +51,7 @@ export default function ListUsers() {
           height: 350,
           maxWidth: "fit-content",
           margin: "0 auto",
-          padding: "0 15px",
+          padding: "10px 15px 0 15px",
         }}
       >
         <Typography variant="h5" gutterBottom>
