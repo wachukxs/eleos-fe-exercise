@@ -7,7 +7,6 @@ import PageHeader from "../components/page-header";
 export default function ListTask({
   tasks,
   deleteAction,
-  editAction,
   setUserTaskToEdit,
 }) {
   return (
@@ -36,7 +35,6 @@ export default function ListTask({
               key={task.id}
               setUserTaskToEdit={setUserTaskToEdit}
               deleteAction={deleteAction}
-              editAction={editAction}
               task={task}
             />
           ))}

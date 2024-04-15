@@ -10,7 +10,7 @@ import {
   MenuItem,
 } from "@mui/material";
 
-export default function Task({ task, deleteAction, editAction, setUserTaskToEdit }) {
+export default function Task({ task, deleteAction, setUserTaskToEdit }) {
   const [anchorMenuElement, setAnchorMenuElement] = useState(null);
   const isMenuOpen = Boolean(anchorMenuElement);
   const handleClick = (event) => {

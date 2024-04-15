@@ -69,7 +69,6 @@ export default function AddAndListTasks() {
               setUserTaskToEdit={setUserTaskToEdit}
               tasks={userTasks}
               deleteAction={deleteUserTask}
-              editAction={editUserTask}
             />
           </Grid>
         </Grid>
