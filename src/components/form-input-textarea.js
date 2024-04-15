@@ -1,16 +1,8 @@
 import React from "react";
-import {
-  TextField
-} from "@mui/material";
+import { TextField } from "@mui/material";
 import { Controller } from "react-hook-form";
 
-export default function FormInputText({
-  name,
-  control,
-  error,
-  label
-}) {
-
+export default function FormInputTextarea({ name, control, error, label }) {
   return (
     <>
       <Controller
@@ -18,9 +10,11 @@ export default function FormInputText({
         control={control}
         render={({ field }) => (
           <TextField
-            id="outlined-basic"
+            id="filled-basic"
             label={label}
-            variant="outlined"
+            variant="filled"
+            multiline
+            rows={4}
             error={!!error}
             helperText={error}
             {...field}

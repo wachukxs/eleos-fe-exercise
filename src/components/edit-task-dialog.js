@@ -1,17 +1,17 @@
 import React from "react";
 import {
   Button,
-  TextField,
   Box,
   Dialog,
   DialogTitle,
   DialogContent,
   DialogActions,
 } from "@mui/material";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormInputText from "./form-input-text";
+import FormInputTextarea from "./form-input-textarea";
 
 export default function EditTaskDialog({
   task,
@@ -64,24 +64,9 @@ export default function EditTaskDialog({
             autoComplete="off"
             flexDirection="column"
           >
-            <FormInputText control={control} name="name" error={errors?.name} />
+            <FormInputText control={control} name="name" label="Name" error={errors?.name?.message} />
 
-            <Controller
-              name="description"
-              control={control}
-              render={({ field }) => (
-                <TextField
-                  id="filled-basic"
-                  label="Description"
-                  variant="filled"
-                  multiline
-                  rows={4}
-                  {...field}
-                  error={!!errors?.description}
-                  helperText={errors?.description?.message}
-                />
-              )}
-            />
+            <FormInputTextarea control={control} name="description" label="Description" error={errors?.description?.message} />
           </Box>
         </DialogContent>
         <DialogActions>
