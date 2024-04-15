@@ -3,6 +3,7 @@ import { TextField, Typography, Box, Button } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import { object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import FormInputText from "../components/form-input-text";
 
 /**
  * TODO:
@@ -59,20 +60,7 @@ export default function AddTask({ onAddTaskClick, userTasksUpdated }) {
         autoComplete="off"
         flexDirection="column"
       >
-        <Controller
-          name="name"
-          control={control}
-          render={({ field }) => (
-            <TextField
-              id="outlined-basic"
-              label="Name"
-              variant="outlined"
-              {...field}
-              error={!!errors?.name}
-              helperText={errors?.name?.message}
-            />
-          )}
-        />
+        <FormInputText control={control} name="name" error={errors?.name} />
 
         <Controller
           name="description"

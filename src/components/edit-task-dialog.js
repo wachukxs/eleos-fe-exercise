@@ -11,6 +11,7 @@ import {
 import { useForm, Controller } from "react-hook-form";
 import { object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import FormInputText from "./form-input-text";
 
 export default function EditTaskDialog({
   task,
@@ -63,20 +64,7 @@ export default function EditTaskDialog({
             autoComplete="off"
             flexDirection="column"
           >
-            <Controller
-              name="name"
-              control={control}
-              render={({ field }) => (
-                <TextField
-                  id="outlined-basic"
-                  label="Name"
-                  variant="outlined"
-                  {...field}
-                  error={!!errors?.name}
-                  helperText={errors?.name?.message}
-                />
-              )}
-            />
+            <FormInputText control={control} name="name" error={errors?.name} />
 
             <Controller
               name="description"
