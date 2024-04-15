@@ -8,8 +8,7 @@ import FormInputTextarea from "../components/form-input-textarea";
 
 /**
  * TODO:
- * 1. make inputs a component of their own.
- * 2. Maybe if there's a draft task, show a modal to ask if they want to save as draft the task, before leaving the page.
+ * 1. Maybe if there's a draft task, show a modal to ask if they want to save as draft the task, before leaving the page.
  */
 export default function AddTask({ onAddTaskClick, userTasksUpdated }) {
   const taskSchema = object({

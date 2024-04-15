@@ -63,10 +63,24 @@ export default function EditTaskDialog({
             noValidate
             autoComplete="off"
             flexDirection="column"
+            sx={{
+              minWidth: 290,
+              paddingTop: "10px",
+            }}
           >
-            <FormInputText control={control} name="name" label="Name" error={errors?.name?.message} />
+            <FormInputText
+              control={control}
+              name="name"
+              label="Name"
+              error={errors?.name?.message}
+            />
 
-            <FormInputTextarea control={control} name="description" label="Description" error={errors?.description?.message} />
+            <FormInputTextarea
+              control={control}
+              name="description"
+              label="Description"
+              error={errors?.description?.message}
+            />
           </Box>
         </DialogContent>
         <DialogActions>
