@@ -11,6 +11,8 @@ import {
   Box,
   Tab,
   Tabs,
+  Alert,
+  Snackbar,
 } from "@mui/material";
 import { useParams } from "react-router-dom";
 import UserDetailsSkeleton from "../components/user-details-skeleton";
@@ -46,12 +48,11 @@ function CustomTabPanel(props) {
  * Design inspiration https://www.uidesigndaily.com/posts/sketch-profile-card-stats-list-day-1337
  */
 export default function UserDetails() {
-  // TODO: Pick user id from route param.
   const { userId } = useParams();
-  console.log(userId);
-  const usersUrl = `https://dummyjson.com/users/${userId}`;
   const [userData, setUserData] = useState(null);
-  const [fetchingData, setFetchingData] = useState(true);
+  const [isFetchingData, setIsFetchingData] = useState(true);
+  const [errorFetchingData, setErrorFetchingData] = useState(false);
+  const [someOtherErrorOccurred, setSomeOtherErrorOccurred] = useState(false);
 
   const [value, setValue] = React.useState(0);
 
@@ -60,24 +61,40 @@ export default function UserDetails() {
   };
 
   useEffect(() => {
+    const usersUrl = `https://dummyjson.com/users/${userId}`;
+    
     fetch(usersUrl)
-      .then((response) => response.json())
+      .then((response) => {
+        console.log("status", response.status);
+        if (response.status !== 200) {
+          setErrorFetchingData(true);
+        }
+        return response.json();
+      })
       .then((user) => {
         console.log("user", user);
         setUserData(user);
       })
       .catch((error) => {
-        console.error(error);
-        // TODO: show error. Also do check for if user is not null
+        setSomeOtherErrorOccurred(true)
       })
-      .finally(() => setFetchingData(false)); // TODO: Show notification on failure
-  }, []);
+      .finally(() => setIsFetchingData(false));
+  }, [userId]);
 
   return (
     <>
-      {fetchingData ? (
+      {isFetchingData ? (
         <UserDetailsSkeleton />
-      ) : userData ? (
+      ) : errorFetchingData ? (
+        <Box>
+          <Alert
+            style={{ width: "fit-content", margin: "0 auto" }}
+            severity="error"
+          >
+            {userData?.message}
+          </Alert>
+        </Box>
+      ) : (
         <Card sx={{ maxWidth: 345, margin: "0 auto", marginTop: "10%" }}>
           <CardHeader
             avatar={
@@ -131,9 +148,14 @@ export default function UserDetails() {
             </CustomTabPanel>
           </Box>
         </Card>
-      ) : (
-        <></>
       )}
+
+      <Snackbar
+        open={someOtherErrorOccurred}
+        autoHideDuration={6000}
+        onClose={() => setSomeOtherErrorOccurred(false)}
+        message="An error occurred, that's all we know for now"
+      />
     </>
   );
 }
