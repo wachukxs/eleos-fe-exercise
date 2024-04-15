@@ -29,7 +29,6 @@ export default function AddAndListTasks() {
   };
 
   useEffect(() => {
-    // console.log(userTasks);
     setUserTasksUpdated((userTasksUpdated) => !userTasksUpdated);
   }, [userTasks]);
 

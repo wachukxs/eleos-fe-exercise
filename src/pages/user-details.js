@@ -1,28 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-  Icon,
-  Avatar,
-  Typography,
-  IconButton,
-  CardActions,
-  CardContent,
-  CardHeader,
-  Card,
-  Box,
-  Tab,
-  Tabs,
-  Alert,
-  Snackbar,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemAvatar,
-} from "@mui/material";
-import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
-import TabPanel from "@mui/lab/TabPanel";
-
 import { useParams } from "react-router-dom";
+import { Box, Alert, Snackbar } from "@mui/material";
 import UserDetailsSkeleton from "../components/user-details-skeleton";
 import UserDetailsCard from "../components/user-details-card";
 
@@ -49,14 +27,12 @@ export default function UserDetails() {
 
     fetch(usersUrl)
       .then((response) => {
-        // console.log("status", response.status);
         if (response.status !== 200) {
           setErrorFetchingData(true);
         }
         return response.json();
       })
       .then((user) => {
-        // console.log("user", user);
         setUserData(user);
       })
       .catch((error) => {

@@ -39,7 +39,6 @@ export default function ListUsers() {
     fetch(usersUrl)
       .then((response) => response.json())
       .then((json) => {
-        // console.log("users", json);
         setUserData(json.users);
       })
       .catch((error) => console.error(error));
