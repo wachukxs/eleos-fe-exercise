@@ -1,5 +1,12 @@
 # What I did
 * Live preview here [https://eleos-fe-exe.netlify.app/](https://eleos-fe-exe.netlify.app/)
+* Used eleos' brand colors for the app's color palette.
+* Easy navigation, and simple UI.
+* UX to give user feedback after key actions.
+* Wrote a passing test :)
+* Made app a11y friendly.
+* 404 error page.
+* Everything else that was asked.
 
 ## Getting Started with Create React App
 

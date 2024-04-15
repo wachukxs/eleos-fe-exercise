@@ -52,11 +52,6 @@ export default function UserDetailsCard({ user }) {
             aria-label="user picture"
           />
         }
-        // action={
-        //   <IconButton aria-label="more actions">
-        //     <Icon>more</Icon>
-        //   </IconButton>
-        // }
         title={`${user?.firstName} ${user?.lastName}`}
         subheader={user?.email}
       />
