@@ -212,7 +212,7 @@ export default function UserDetailsCard({ user }) {
                         aria-label="close"
                         color="inherit"
                         onClick={() => {
-                          // TODO: Implement copy and show successful or failed alert
+                          // TODO: Maybe implement copy and show successful or failed alert
                         }}
                       >
                         <Icon>content_copy</Icon>

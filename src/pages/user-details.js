@@ -5,14 +5,6 @@ import UserDetailsSkeleton from "../components/user-details-skeleton";
 import UserDetailsCard from "../components/user-details-card";
 import PageHeader from "../components/page-header";
 
-// TODO: add a11y (prop) in user-details-card.js
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
 /***
  * Design inspiration https://www.uidesigndaily.com/posts/sketch-profile-card-stats-list-day-1337
  */

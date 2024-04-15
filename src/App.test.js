@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-// TODO: Write functionality test cases (e.g can add & maybe delete task).
+// TODO: Write (more) functionality test cases (e.g can add & maybe delete task).
 test('renders "Add Task *" texts', () => {
   render(<App />);
   const addTaskFormText = screen.getByText(/Add Task Form/i);
